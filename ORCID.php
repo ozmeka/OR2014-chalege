@@ -28,6 +28,37 @@ class ORCID {
         return $convertedResults;
     }
 
+    function performGenericSearch($values){
+    	 
+    	$urlBase = "http://pub.orcid.org/v1.1/search/orcid-bio/?defType=edismax&";
+    	$name = $values['name'];
+    	$url = $urlBase . 'q=' . urlencode($name) . '&qf=given-names^2.0%20family-name^0.5&start=0&rows=10';
+    	return $this->search($url);
+    }
+    
+    function performSpecificSearch($values){
+    	 
+    	$url = $this->_createORCIDURL($values);
+    	return $this->search($url);
+    }
+    
+    function search($url){
+    	 
+    	$opts = array(
+    			'http'=>array(
+    					'method'=>"GET",
+    					'header'=>"Accept: application/orcid+json\r\n"
+    			)
+    	);
+    	 
+    	$context = stream_context_create($opts);
+    	$content = file_get_contents($url,false,$context);
+    	 
+    	$result = json_decode($content, true);
+    	$convertedResults = $this->_processORCIDResultSet($result);
+    	 
+    	return $convertedResults;
+    }
 
     function _createORCIDURL(&$values) {
 
@@ -177,7 +208,16 @@ class ORCID {
 function get_data_person($parameters) {
     // Cheat a little - this is the "person" data provider.
     $orcid = new ORCID();
-    return $orcid->perform($parameters);
+    
+    //Determine whether this is a generic or a specific request, 
+    //had to do it this way to meet our requirements for the moment
+    if(array_key_exists("method", $parameters) && $parameters["method"] == "generic") {
+        return $orcid->performGenericSearch($parameters);    
+    }
+    else {
+    	return $orcid->performSpecificSearch($parameters);
+    }
+    
 }
 
 
