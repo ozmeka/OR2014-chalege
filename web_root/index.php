@@ -1,6 +1,7 @@
 <?php
 
 require('../ORCID.php');
+require('../SCOT.php');
 require('../eprint-export.php');
 
 $f3=require('../fatfree-master/lib/base.php');
@@ -12,6 +13,11 @@ $f3->set("BASEURL", $url);
 $f3->run();
 
 
+function scot($f3)
+{
+	$scot = new SCOT();
+	$scot->handle_request($f3);
+}
 
 function fillmylist($f3)
 {
