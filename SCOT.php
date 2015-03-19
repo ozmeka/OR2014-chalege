@@ -16,8 +16,6 @@ class SCOT {
 	
 	$params = $f3->get('REQUEST');
 	
-//	print_r($_SERVER); die;
-	
 	$LABEL_FRAGMENT = $params['q'];
 	$LANGUAGE = 'en';
 	
@@ -36,8 +34,19 @@ EOB;
 	// get the response from the sparql endoint
 	$rows = $store->query($query, 'rows');
 	
-	$data = array();
+	// sort by ID - can't do this in sparql apparently
+	$sorted_rows = array();
 	foreach ($rows as $row)
+	{
+	    $bits = explode('/', $row['concept']);
+	    $id = $bits[count($bits) - 1];
+	    $sorted_rows[$id] = $row;
+	}
+	ksort($sorted_rows);
+	///
+	
+	$data = array();
+	foreach ($sorted_rows as $row)
 	{
 	    $datum = array(
 		'label' => $row['searchLabel'],
@@ -48,7 +57,7 @@ EOB;
 	}
 	
 	header('Content-Type: application/json');
-	echo json_encode(array(null, $data));
+	echo json_encode(array(null, $data));	// lcsuggest pulls the second element - leaving here for simplicity
     }
 }
 
