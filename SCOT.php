@@ -2,6 +2,8 @@
 
 class SCOT {
 
+    public $data;
+
     function __construct() {
     }
 
@@ -56,8 +58,13 @@ EOB;
 	    $data[] = $datum;
 	}
 	
+	$this->data = $data;
+    }
+    
+    public function render()
+    {
 	header('Content-Type: application/json');
-	echo json_encode(array(null, $data));	// lcsuggest pulls the second element - leaving here for simplicity
+	echo json_encode(array($params['q'], $this->data));	// lcsuggest pulls the second element - leaving here for simplicity
     }
 }
 

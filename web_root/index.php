@@ -2,6 +2,7 @@
 
 require('../ORCID.php');
 require('../SCOT.php');
+require('../SCOT_LCSubjectHeadings.php');
 require('../eprint-export.php');
 
 $f3=require('../fatfree-master/lib/base.php');
@@ -12,11 +13,18 @@ $f3->set("BASEURL", $url);
 
 $f3->run();
 
+function scot_lcsubj($f3)
+{
+	$scot_lcsubj = new SCOT_LcSubjectHeadings();
+	$scot_lcsubj->handle_request($f3);
+	$scot_lcsubj->render();
+}
 
 function scot($f3)
 {
 	$scot = new SCOT();
 	$scot->handle_request($f3);
+	$scot->render();
 }
 
 function fillmylist($f3)
