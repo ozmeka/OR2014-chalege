@@ -1,8 +1,11 @@
 <?php
 
+// include ARC2 libraries
+require_once __DIR__ . '/vendor/autoload.php';
+
 class SCOT {
 
-	public $term;
+    public $term;
     public $data;
 
     function __construct() {
@@ -10,9 +13,7 @@ class SCOT {
 
     function handle_request($f3)
     {
-		// include ARC2 libraries
-		require_once('../libraries/arc2/ARC2.php');
-		
+
 		// configure the remote store
 		$configuration = array('remote_store_endpoint'  => 'http://vocabulary.curriculum.edu.au/PoolParty/sparql/scot');
 		$store = ARC2::getRemoteStore($configuration);

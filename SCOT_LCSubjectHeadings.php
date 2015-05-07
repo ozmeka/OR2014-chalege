@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';	// install non-blocking curl lib with composer
+require_once __DIR__ . '/vendor/autoload.php';
 require_once 'SCOT.php';
 
 class SCOT_LCSubjectHeadings {

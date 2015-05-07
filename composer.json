@@ -1,5 +1,6 @@
 {
     "require": {
-        "stil/curl-easy": "*"
+        "stil/curl-easy": "*",
+        "semsol/arc2": "~2.2"
     }
 }
