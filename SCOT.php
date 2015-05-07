@@ -20,7 +20,16 @@ class SCOT {
 		
 		$params = $f3->get('REQUEST');
 		
-		$this->term = $LABEL_FRAGMENT = $params['q'];
+		if (!empty($params['q']))
+		{
+			$this->term = $LABEL_FRAGMENT = $params['q'];
+		}
+		else
+		{
+			$f3->status(400);
+			die('Expected URL parameter: q');
+		}
+		
 		$LANGUAGE = 'en';
 		
 		// the sparql query

@@ -20,7 +20,16 @@ class SCOT_LCSubjectHeadings {
 		// call to Library of Congress
 		
 		$params = $f3->get('REQUEST');
-		$this->term = $params['q'];
+		
+		if (!empty($params['q']))
+		{
+			$this->term = $LABEL_FRAGMENT = $params['q'];
+		}
+		else
+		{
+			$f3->status(400);
+			die('Expected URL parameter: q');
+		}
 		
 		// prepare the library of congress subject query
 		$request = new \cURL\Request('http://id.loc.gov/authorities/subjects/suggest?q='. $this->term);
