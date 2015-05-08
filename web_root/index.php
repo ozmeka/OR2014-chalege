@@ -1,6 +1,6 @@
 <?php
 
-require('../ORCID.php');
+// require('../ORCID.php');
 require('../SCOT.php');
 require('../SCOT_LCSubjectHeadings.php');
 require('../eprint-export.php');
