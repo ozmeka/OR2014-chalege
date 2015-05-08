@@ -6,8 +6,8 @@ Developer challenge entry for OR2014
 Find out more by reading:
 Presentation slides at http://dx.doi.org/10.6084/m9.figshare.1054651
 
-Test forms for humans are available at http://fml.data.ac.nz/ and http://fml.adamfield.net/
-Actual endpoints hosted at http://fml.data.ac.nz/fillmylist and http://fml.adamfield.net/fillmylist
+Test forms for humans are available at http://fml.adamfield.net/
+An Actual endpoint is hosted at http://fml.adamfield.net/fillmylist
 
 (These are hosted on personal servers and might not last forever - we're still looking for a permanent home for an FML service.)
 
