@@ -1,4 +1,4 @@
-OR2014-chalege
+Fill My List
 ==============
 
 Developer challenge entry for OR2014
@@ -17,7 +17,7 @@ Demonstration repositories are available for testing, too:
 
 - http://demoprints.eprints.org : Self-register at this demo EPrints site and try out the autocomplete person name lookups when entering author information in a submission form
 
-- http://fml.data.ac.nz/xmlui : Self-register at this demo DSpace site and try out person name authority lookups and equipment authority lookups. Note: this particular instance will only stay up for as long as Kim can afford it. Generic authority lookups will be contribued to DSpace core shortly, at which time http://demo.dspace.org should work for person name lookup demos
+- ~~http://fml.data.ac.nz/xmlui : Self-register at this demo DSpace site and try out person name authority lookups and equipment authority lookups. Note: this particular instance will only stay up for as long as Kim can afford it. Generic authority lookups will be contribued to DSpace core shortly, at which time http://demo.dspace.org should work for person name lookup demos~~ (No longer available)
 
 
 ==
