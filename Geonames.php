@@ -30,7 +30,7 @@ class Geonames {
 		
 		if (!empty($params['q']))
 		{
-			$this->term = $params['q'];
+			$this->term = urlencode($params['q']);
 			
 			if (!empty($params['featureClass']))
 			{
@@ -49,19 +49,22 @@ class Geonames {
 			$maxRows = 25;
 			$orderBy = 'relevance';
 			
+			$endpoint = 'http://api.geonames.org/searchJSON';
 			$query_string = "q={$this->term}&featureClass={$fc_str}&country={$country}&lang={$lang}&maxRows={$maxRows}&orderBy={$orderBy}&username={$username}";
+			$uri = $endpoint. '?'. $query_string;
+			
 			
 //			die($query_string);
 			
 			$ch = curl_init();
 			$options = array(
-				CURLOPT_URL => 'http://api.geonames.org/searchJSON?'. $query_string,
+				CURLOPT_URL => $uri,
 				CURLOPT_RETURNTRANSFER => 1,
 			);
 			curl_setopt_array($ch, $options);
 			$response = curl_exec($ch);
 			curl_close($ch);
-			
+
 			$data = json_decode($response);
 
 			$output = array();
@@ -69,11 +72,7 @@ class Geonames {
 			{
 				$outnode = array();
 				$outnode['value'] = "http://www.geonames.org/{$node->geonameId}";
-				$outnode['label'] = $node->name;
-				if ($node->toponymName != $node->name)
-				{
-					$outnode['label'] .= " ({$node->toponymName})";
-				}
+				$outnode['label'] = $node->toponymName;
 				if ($this->_abbreviateState($node->adminName1))
 				{
 					$outnode['label'] .= ', '. $this->_abbreviateState($node->adminName1);
@@ -106,7 +105,7 @@ class Geonames {
     public function render()
     {
 		header('Content-Type: application/json');
-		echo json_encode(array($this->term, $this->data), JSON_PRETTY_PRINT);
+		echo json_encode(array(urldecode($this->term), $this->data), JSON_PRETTY_PRINT);
     }
 }
 
