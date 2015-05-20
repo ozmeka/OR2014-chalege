@@ -64,7 +64,7 @@ EOB;
     public function render()
     {
 //	header('Content-Type: application/json');
-	echo json_encode(array($this->term, $this->data), JSON_PRETTY_PRINT);	// lcsuggest pulls the second element - leaving here for simplicity
+	echo json_encode(array($this->term, $this->data));	// lcsuggest pulls the second element - leaving here for simplicity
     }
 }
 

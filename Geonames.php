@@ -105,7 +105,7 @@ class Geonames {
     public function render()
     {
 		header('Content-Type: application/json');
-		echo json_encode(array(urldecode($this->term), $this->data), JSON_PRETTY_PRINT);
+		echo json_encode(array(urldecode($this->term), $this->data));
     }
 }
 
