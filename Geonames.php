@@ -68,7 +68,7 @@ class Geonames {
 			foreach ($data->geonames as $key => $node)
 			{
 				$outnode = array();
-				$outnode['value'] = "http://www.geonames.org/$node->geonameId}";
+				$outnode['value'] = "http://www.geonames.org/{$node->geonameId}";
 				$outnode['label'] = $node->name;
 				if ($node->toponymName != $node->name)
 				{
