@@ -3,6 +3,7 @@
 // require('../ORCID.php');
 require('../SCOT.php');
 require('../SCOT_LCSubjectHeadings.php');
+require('../Geonames.php');
 require('../eprint-export.php');
 
 $f3=require('../fatfree-master/lib/base.php');
@@ -12,6 +13,13 @@ $url = $f3->get("SCHEME")."://".$f3->get("HOST").$f3->get("BASE");
 $f3->set("BASEURL", $url);
 
 $f3->run();
+
+function geonames($f3)
+{
+	$geonames = new Geonames();
+	$geonames->handle_request($f3);
+	$geonames->render();
+}
 
 function scot_lcsubj($f3)
 {
