@@ -21,7 +21,6 @@ class Geonames {
 	
     function __construct()
 	{
-	
     }
 
     function handle_request($f3)
@@ -53,8 +52,7 @@ class Geonames {
 			$query_string = "q={$this->term}&featureClass={$fc_str}&country={$country}&lang={$lang}&maxRows={$maxRows}&orderBy={$orderBy}&username={$username}";
 			$uri = $endpoint. '?'. $query_string;
 			
-			
-//			die($query_string);
+//			die($uri);
 			
 			$ch = curl_init();
 			$options = array(
