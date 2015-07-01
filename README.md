@@ -1,25 +1,13 @@
 Fill My List
 ==============
 
-Developer challenge entry for OR2014
+FML proxies to several different web services (UTS eResearch has added lookups to SCOT, Geonames and Library of Congress to use with Omeka) with a consistent syntax to return key-value pairs for suggestion drop downs to text entry fields.
+
+Also see Omeka plugin ozmeka/SuggestAnything which calls this as a service.
+
+May eventually be repackaged as an Omeka plugin.
+
+Originally written as Developer challenge entry for OR2014
 
 Find out more by reading:
 Presentation slides at http://dx.doi.org/10.6084/m9.figshare.1054651
-
-Test forms for humans are available at http://fml.adamfield.net/
-An Actual endpoint is hosted at http://fml.adamfield.net/fillmylist
-
-(These are hosted on personal servers and might not last forever - we're still looking for a permanent home for an FML service.)
-
-Try out the forms to see which parameters the webservice endpoints accept and require.
-
-Demonstration repositories are available for testing, too:
-
-- http://demoprints.eprints.org : Self-register at this demo EPrints site and try out the autocomplete person name lookups when entering author information in a submission form
-
-- ~~http://fml.data.ac.nz/xmlui : Self-register at this demo DSpace site and try out person name authority lookups and equipment authority lookups. Note: this particular instance will only stay up for as long as Kim can afford it. Generic authority lookups will be contribued to DSpace core shortly, at which time http://demo.dspace.org should work for person name lookup demos~~ (No longer available)
-
-
-==
-
-Fun fact: "chalege" means "rapid github repository creation methodology" in Southamptonese
